@@ -9,8 +9,8 @@ import "./index.css";
 function Home() {
   return (
     <main className="content">
-      <h1>Welcome to Game Tracker!</h1>
-      <p>Your React application starts here.</p>
+      <h1>Game Tracker</h1>
+      
     </main>
   );
 }
@@ -19,7 +19,7 @@ function About() {
   return (
     <main className="content">
       <h1>About</h1>
-      <p>This project is built with React.</p>
+      
     </main>
   );
 }
