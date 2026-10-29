@@ -3,26 +3,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar.jsx";
 import Sidebar from "./components/sidebar.jsx";
 import Footer from "./components/footer.jsx";
+import Home from "./pages/home.jsx";
+import About from "./pages/about.jsx";
+import ItemDetails from "./pages/itemdetails.jsx";
+import NotFound from "./pages/notfound.jsx";
 
 import "./index.css";
-
-function Home() {
-  return (
-    <main className="content">
-      <h1>Game Tracker</h1>
-      
-    </main>
-  );
-}
-
-function About() {
-  return (
-    <main className="content">
-      <h1>About</h1>
-      
-    </main>
-  );
-}
 
 function App() {
   return (
@@ -34,6 +20,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/items/:id" element={<ItemDetails />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
         <Footer />
