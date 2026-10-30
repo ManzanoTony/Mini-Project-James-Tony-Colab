@@ -1,15 +1,21 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function ItemDetails() {
-  const { id } = useParams();
-
+function GameItem({ game }) {
   return (
-    <main className="content">
-      <h1>Item Details</h1>
-      <p>Item ID: {id}</p>
-      <Link to="/">Go back to home</Link>
-    </main>
+    <article className="game-item">
+      <h3>{game.title}</h3>
+
+      <p>Platform: {game.platform}</p>
+
+      <p>Genre: {game.genre}</p>
+
+      <p>Status: {game.status}</p>
+
+      <Link to={`/items/${game.id}`}>
+        Edit game
+      </Link>
+    </article>
   );
 }
 
-export default ItemDetails;
+export default GameItem;
