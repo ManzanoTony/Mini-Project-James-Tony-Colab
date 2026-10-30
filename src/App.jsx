@@ -6,9 +6,9 @@ import Sidebar from "./components/sidebar.jsx";
 import Footer from "./components/footer.jsx";
 import Home from "./pages/home.jsx";
 import About from "./pages/about.jsx";
-import ItemDetails from "./pages/itemdetails.jsx";
+import EditGame from "./pages/EditGame.jsx";
 import NotFound from "./pages/notfound.jsx";
-import gamesData from "./components/Data/games.js";
+import gamesData from "./components/data/games.js";
 import "./index.css";
 
 function App() {
@@ -23,9 +23,24 @@ function App() {
   }, [games]);
 
   const handleAddGame = (game) => {
-    setGames((currentGames) => [...currentGames, game]);
+    setGames((currentGames) => {
+      const nextId = currentGames.reduce((max, g) => Math.max(max, g.id), 0) + 1;
+
+      return [...currentGames, { ...game, id: nextId }];
+    });
   };
 
+  const handleUpdateGame = (updatedGame) => {
+    setGames((currentGames) =>
+      currentGames.map((game) =>
+        game.id === updatedGame.id ? updatedGame : game
+      )
+    );
+  };
+
+  const handleDeleteGame = (id) => {
+    setGames((currentGames) => currentGames.filter((game) => game.id !== id));
+  };
 
   return (
     <BrowserRouter>
@@ -34,12 +49,18 @@ function App() {
         <div className="layout">
           <Sidebar />
           <Routes>
+            <Route path="/" element={<Home onAddGame={handleAddGame} />} />
+            <Route path="/collection" element={<About games={games} />} />
             <Route
-              path="/"
-              element={<Home games={games} onAddGame={handleAddGame} />}
+              path="/items/:id"
+              element={
+                <EditGame
+                  games={games}
+                  onUpdateGame={handleUpdateGame}
+                  onDeleteGame={handleDeleteGame}
+                />
+              }
             />
-            <Route path="/about" element={<About />} />
-            <Route path="/items/:id" element={<ItemDetails />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

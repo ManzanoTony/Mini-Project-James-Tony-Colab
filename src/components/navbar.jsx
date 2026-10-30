@@ -3,7 +3,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="logo">
         <span>🎮</span>
-        <h2>Game Tracker</h2>
+       <h2>Game Tracker</h2>
       </div>
     </nav>
   );

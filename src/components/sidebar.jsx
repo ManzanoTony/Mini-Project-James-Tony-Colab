@@ -1,14 +1,13 @@
-
 import { Link } from "react-router-dom";
 
 function Sidebar() {
   return (
     <aside className="sidebar">
-      <h3>Navigation</h3>
-
-      <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
-      <Link to="/items/1">Item Details</Link>
+      <nav className="sidebar-links">
+        <Link to="/">Home</Link>
+        <Link to="/collection">My Collection</Link>
+        <Link to="/items/1">Edit Game</Link>
+      </nav>
     </aside>
   );
 }
