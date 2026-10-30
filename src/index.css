@@ -73,3 +73,75 @@ body {
 .footer a {
   color: #5865f2;
 }
+
+.game-item {
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background-color: #e3e5e8;
+  color: #23272a;
+}
+
+.status-playing {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+.status-completed {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.status-backlog {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 400px;
+  margin-bottom: 32px;
+}
+
+form label {
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 1rem;
+  border: 1px solid #c7c9cc;
+  border-radius: 6px;
+  background-color: white;
+}
+
+form button {
+  margin-top: 16px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  background-color: #5865f2;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #4752c4;
+}

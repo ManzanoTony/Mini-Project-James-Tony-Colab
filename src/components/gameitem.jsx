@@ -9,7 +9,16 @@ function GameItem({ game }) {
 
       <p>Genre: {game.genre}</p>
 
-      <p>Status: {game.status}</p>
+      <p>
+        Status:{" "}
+        <span
+          className={`status-badge status-${String(game.status)
+            .toLowerCase()
+            .replace(/\s+/g, "-")}`}
+        >
+          {game.status}
+        </span>
+      </p>
 
       <Link to={`/items/${game.id}`}>
         Edit game
