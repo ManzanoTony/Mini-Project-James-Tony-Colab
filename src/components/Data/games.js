@@ -13,7 +13,9 @@ const games = [
     title: "Elden Ring",
     platform: "PS5",
     genre: "Action RPG",
-    status: "Completed"
+    status: "Completed",
+    difficulty: 5,
+    rating: 5
   },
   {
     id: 3,

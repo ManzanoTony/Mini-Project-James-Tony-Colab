@@ -5,6 +5,8 @@ const [title, setTitle] = useState("");
 const [platform, setPlatform] = useState("");
 const [genre, setGenre] = useState("");
 const [status, setStatus] = useState("Backlog");
+const [difficulty, setDifficulty] = useState("");
+const [rating, setRating] = useState("");
 
 useEffect(() => {
 if (initialValues) {
@@ -14,6 +16,8 @@ if (initialValues) {
 setPlatform(initialValues.platform);
 setGenre(initialValues.genre);
 setStatus(initialValues.status);
+setDifficulty(Number(initialValues.difficulty) ? String(initialValues.difficulty) : "");
+setRating(initialValues.rating ? String(initialValues.rating) : "");
 }
 }, [initialValues]);
 
@@ -24,7 +28,9 @@ const gameData = {
 title,
 platform,
 genre,
-status
+status,
+difficulty: difficulty ? Number(difficulty) : null,
+rating: rating ? Number(rating) : null
 };
 
 onSubmit(gameData);
@@ -34,6 +40,8 @@ setTitle("");
 setPlatform("");
 setGenre("");
 setStatus("Backlog");
+setDifficulty("");
+setRating("");
 }
 }
 
@@ -72,6 +80,32 @@ onChange={(event) => setStatus(event.target.value)}
 <option value="Playing">Playing</option>
 <option value="Completed">Completed</option>
 <option value="Dropped">Dropped</option>
+</select>
+
+<label>Difficulty</label>
+<select
+value={difficulty}
+onChange={(event) => setDifficulty(event.target.value)}
+>
+<option value="">Not set</option>
+<option value="1">1 - Very easy</option>
+<option value="2">2 - Easy</option>
+<option value="3">3 - Medium</option>
+<option value="4">4 - Hard</option>
+<option value="5">5 - Very hard</option>
+</select>
+
+<label>Rating</label>
+<select
+value={rating}
+onChange={(event) => setRating(event.target.value)}
+>
+<option value="">Not rated</option>
+<option value="1">★ 1</option>
+<option value="2">★★ 2</option>
+<option value="3">★★★ 3</option>
+<option value="4">★★★★ 4</option>
+<option value="5">★★★★★ 5</option>
 </select>
 
 <button type="submit">{buttonText}</button>

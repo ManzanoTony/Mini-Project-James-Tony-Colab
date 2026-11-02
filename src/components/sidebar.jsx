@@ -6,7 +6,6 @@ function Sidebar() {
       <nav className="sidebar-links">
         <Link to="/">Home</Link>
         <Link to="/collection">My Collection</Link>
-        <Link to="/items/1">Edit Game</Link>
       </nav>
     </aside>
   );

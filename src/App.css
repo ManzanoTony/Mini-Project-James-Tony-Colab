@@ -182,3 +182,55 @@
     border-right-color: var(--border);
   }
 }
+
+
+/* GAME RATING */
+
+.game-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #34343D;
+}
+
+.difficulty,
+.enjoyment {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.game-rating p {
+  color: #A1A1AA;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.difficulty-icon {
+  font-size: 25px;
+  filter: drop-shadow(0 0 5px currentColor);
+}
+
+.stars {
+  display: flex;
+  gap: 3px;
+}
+
+.star {
+  color: #45454F;
+  font-size: 20px;
+}
+
+.star.active {
+  color: #A3E635;
+  text-shadow: 0 0 7px #A3E635;
+}
+
+.game-rating span:last-child {
+  color: #D4D4D8;
+  font-size: 12px;
+}

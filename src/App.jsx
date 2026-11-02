@@ -6,7 +6,6 @@ import Sidebar from "./components/sidebar.jsx";
 import Footer from "./components/footer.jsx";
 import Home from "./pages/home.jsx";
 import About from "./pages/about.jsx";
-import EditGame from "./pages/EditGame.jsx";
 import NotFound from "./pages/notfound.jsx";
 import gamesData from "./components/data/games.js";
 import "./index.css";
@@ -15,11 +14,27 @@ function App() {
   const [games, setGames] = useState(() => {
     const savedGames = localStorage.getItem("games");
 
-    return savedGames ? JSON.parse(savedGames) : gamesData;
+    if (!savedGames) return gamesData;
+
+    // Añade los juegos de games.js que aún no se hayan ofrecido antes,
+    // para que los borrados por el usuario no reaparezcan
+    const parsed = JSON.parse(savedGames);
+    const seededIds = JSON.parse(localStorage.getItem("seededIds") || "[]");
+    const missing = gamesData.filter(
+      (seed) =>
+        !seededIds.includes(seed.id) &&
+        !parsed.some((game) => game.id === seed.id)
+    );
+
+    return [...parsed, ...missing];
   });
 
   useEffect(() => {
     localStorage.setItem("games", JSON.stringify(games));
+    localStorage.setItem(
+      "seededIds",
+      JSON.stringify(gamesData.map((game) => game.id))
+    );
   }, [games]);
 
   const handleAddGame = (game) => {
@@ -50,17 +65,9 @@ function App() {
           <Sidebar />
           <Routes>
             <Route path="/" element={<Home onAddGame={handleAddGame} />} />
-            <Route path="/collection" element={<About games={games} />} />
-            <Route
-              path="/items/:id"
-              element={
-                <EditGame
-                  games={games}
-                  onUpdateGame={handleUpdateGame}
-                  onDeleteGame={handleDeleteGame}
-                />
-              }
-            />
+            <Route path="/collection" element={<About games={games} onUpdateGame={handleUpdateGame}
+                onDeleteGame={handleDeleteGame}
+              />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
