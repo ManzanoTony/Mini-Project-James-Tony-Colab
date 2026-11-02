@@ -44,6 +44,7 @@ h1 {
 }
 
 .logo {
+  text-decoration: none;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -61,39 +62,6 @@ h1 {
 }
 
 .logo h2:hover {
-  color: #A735E6;
-}
-
-/* SIDEBAR */
-.sidebar {
-  width: 240px;
-  min-width: 240px;
-  background-color: #191F28;
-  padding: 30px 20px;
-}
-
-.sidebar-links {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.sidebar a {
-  display: block;
-  color: #A1A1AA;
-  text-decoration: none;
-  padding: 12px 14px;
-  border-radius: 8px;
-  transition: 0.2s ease;
-}
-
-.sidebar a.active {
-  background-color: #252D37;
-  color: #A3E635;
-}
-
-.sidebar a:hover {
-  background-color: #252D37;
   color: #A735E6;
 }
 
@@ -121,6 +89,30 @@ h1 {
     1px 0 0 #A735E6;
 }
 
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.button-link {
+  display: inline-block;
+  background-color: #A3E635;
+  color: #11151B !important;
+  padding: 11px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.button-link:hover {
+  background-color: #A735E6;
+  color: #fff !important;
+}
+
 /* GAME LIST / CARDS */
 .game-list {
   display: grid;
@@ -130,6 +122,11 @@ h1 {
   padding: 24px;
   border: 2px solid #A735E6;
   border-radius: 12px;
+}
+
+.game-list > h2,
+.game-list > p {
+  grid-column: 1 / -1;
 }
 
 .game-item {
@@ -333,17 +330,6 @@ form button {
 @media (max-width: 768px) {
   .layout {
     flex-direction: column;
-  }
-
-  .sidebar {
-    width: 100%;
-    min-width: 0;
-    padding: 15px;
-  }
-
-  .sidebar-links {
-    flex-direction: row;
-    flex-wrap: wrap;
   }
 
   .content {

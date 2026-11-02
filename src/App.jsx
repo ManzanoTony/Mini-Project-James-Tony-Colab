@@ -2,10 +2,9 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/navbar.jsx";
-import Sidebar from "./components/sidebar.jsx";
 import Footer from "./components/footer.jsx";
-import Home from "./pages/home.jsx";
-import About from "./pages/about.jsx";
+import Collection from "./pages/collection.jsx";
+import AddGame from "./pages/addgame.jsx";
 import NotFound from "./pages/notfound.jsx";
 import gamesData from "./components/data/games.js";
 import "./index.css";
@@ -53,7 +52,7 @@ function App() {
     );
   };
 
-  const handleDeleteGame = (id) => {
+    const handleDeleteGame = (id) => {
     setGames((currentGames) => currentGames.filter((game) => game.id !== id));
   };
 
@@ -62,12 +61,18 @@ function App() {
       <div className="app">
         <Navbar />
         <div className="layout">
-          <Sidebar />
           <Routes>
-            <Route path="/" element={<Home onAddGame={handleAddGame} />} />
-            <Route path="/collection" element={<About games={games} onUpdateGame={handleUpdateGame}
-                onDeleteGame={handleDeleteGame}
-              />} />
+            <Route
+              path="/"
+              element={
+                <Collection
+                  games={games}
+                  onUpdateGame={handleUpdateGame}
+                  onDeleteGame={handleDeleteGame}
+                />
+              }
+            />
+            <Route path="/add" element={<AddGame onAddGame={handleAddGame} />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
