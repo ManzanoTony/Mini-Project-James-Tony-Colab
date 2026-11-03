@@ -15,8 +15,7 @@ function App() {
 
     if (!savedGames) return gamesData;
 
-    // Añade los juegos de games.js que aún no se hayan ofrecido antes,
-    // para que los borrados por el usuario no reaparezcan
+  
     const parsed = JSON.parse(savedGames);
     const seededIds = JSON.parse(localStorage.getItem("seededIds") || "[]");
     const missing = gamesData.filter(

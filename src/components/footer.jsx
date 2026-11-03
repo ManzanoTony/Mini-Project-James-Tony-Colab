@@ -2,9 +2,7 @@
 function Footer() {
   return (
     <footer className="footer">
-      <p>
-     
-      </p>
+      <p>Made in Andalucía, powered by code and questionable debugging decisions. — Jimmy &amp; Tony.</p>
     </footer>
   );
 }
