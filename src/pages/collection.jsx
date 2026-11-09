@@ -6,8 +6,8 @@ function Collection({ games, onUpdateGame, onDeleteGame }) {
     <main className="content">
       <div className="page-header">
         <div>
-          <h1>My Collection</h1>
-          <p>All your games in one place.</p>
+          <h1>Dashboard</h1>
+          <p>Your game collection, all in one place.</p>
         </div>
 
         <Link to="/add" className="button-link">

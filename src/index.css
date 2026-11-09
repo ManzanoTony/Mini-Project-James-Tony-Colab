@@ -25,6 +25,14 @@ h1 {
 .app {
   min-height: 100vh;
   display: flex;
+  flex-direction: row;
+}
+
+.app-main {
+  min-width: 0;
+  min-height: 100vh;
+  flex: 1;
+  display: flex;
   flex-direction: column;
 }
 
@@ -33,14 +41,19 @@ h1 {
   flex: 1;
 }
 
-/* NAVBAR */
-.navbar {
-  height: 70px;
+/* SIDEBAR */
+.sidebar {
+  position: sticky;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  flex: 0 0 250px;
   background-color: #191F28;
   display: flex;
-  align-items: center;
-  padding: 0 30px;
-  border-bottom: 1px solid #252D37;
+  flex-direction: column;
+  gap: 42px;
+  padding: 28px 18px;
+  border-right: 1px solid #252D37;
 }
 
 .logo {
@@ -65,10 +78,130 @@ h1 {
   color: #A735E6;
 }
 
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-links a {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 8px;
+  color: #A1A1AA;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.sidebar-links a:hover,
+.sidebar-links a.active {
+  background-color: #263B24;
+  color: #A3E635;
+}
+
+.sidebar-links a:focus-visible,
+.team-card a:focus-visible {
+  outline: 2px solid #A3E635;
+  outline-offset: 4px;
+}
+
 /* CONTENT */
 .content {
   flex: 1;
   padding: 35px;
+}
+
+.about-page {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-heading {
+  max-width: 700px;
+  padding: 38px 0 52px;
+}
+
+.about-eyebrow {
+  color: #A3E635;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+
+.about-heading h1 {
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.1;
+  margin-bottom: 18px;
+  text-shadow: 2px 2px 0 #A735E6;
+}
+
+.about-heading > p:last-child {
+  color: #A1A1AA;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.about-team {
+  border-top: 1px solid #252D37;
+  padding-top: 32px;
+}
+
+.about-section-heading h2 {
+  font-size: 26px;
+  margin-bottom: 24px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.team-card {
+  background-color: #191F28;
+  border: 1px solid #252D37;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.team-avatar {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  background-color: #263B24;
+  color: #A3E635;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.team-card h3 {
+  margin-bottom: 6px;
+  font-size: 18px;
+}
+
+.team-card p {
+  margin-bottom: 20px;
+  color: #A1A1AA;
+  font-size: 14px;
+}
+
+.team-card a {
+  color: #A3E635;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.team-card a:hover {
+  color: #fff;
 }
 
 .content a {
@@ -130,6 +263,9 @@ h1 {
 }
 
 .game-item {
+  height: 390px;
+  min-width: 0;
+  overflow: auto;
   background-color: #191F28;
   border-radius: 12px;
   padding: 18px;
@@ -143,9 +279,23 @@ h1 {
 
 .game-item.has-cover {
   background-size: cover;
-  background-position: center;
+  background-position: center center;
+  background-repeat: no-repeat;
   image-rendering: pixelated;
   box-shadow: inset 0 0 0 1000px rgba(17, 21, 27, 0.65);
+}
+
+.game-item.is-editing {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-item.is-editing form {
+  flex: 1;
+  min-height: 0;
+  max-width: none;
+  overflow-y: auto;
+  padding-right: 4px;
 }
 
 .game-item.has-cover:hover {
@@ -328,15 +478,75 @@ form button {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .app-main {
+    min-height: 0;
+    flex: 1;
+  }
+
   .layout {
     flex-direction: column;
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    flex: 0 0 auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 20px;
+    border-right: 0;
+    border-bottom: 1px solid #252D37;
+  }
+
+  .sidebar-links {
+    flex-direction: row;
+    gap: 8px;
   }
 
   .content {
     padding: 20px;
   }
 
+  .about-heading {
+    padding: 24px 0 36px;
+  }
+
   .game-list {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .sidebar {
+    gap: 10px;
+    padding: 12px 14px;
+  }
+
+  .logo {
+    gap: 8px;
+  }
+
+  .logo-img {
+    height: 36px;
+  }
+
+  .logo h2 {
+    font-size: 18px;
+  }
+
+  .sidebar-links {
+    gap: 2px;
+  }
+
+  .sidebar-links a {
+    padding: 10px 8px;
+    font-size: 13px;
   }
 }

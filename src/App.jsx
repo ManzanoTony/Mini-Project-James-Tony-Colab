@@ -5,6 +5,7 @@ import Navbar from "./components/navbar.jsx";
 import Footer from "./components/footer.jsx";
 import Collection from "./pages/collection.jsx";
 import AddGame from "./pages/addgame.jsx";
+import About from "./pages/about.jsx";
 import NotFound from "./pages/notfound.jsx";
 import gamesData from "./components/data/games.js";
 import "./index.css";
@@ -60,23 +61,26 @@ function App() {
     <BrowserRouter>
       <div className="app">
         <Navbar />
-        <div className="layout">
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Collection
-                  games={games}
-                  onUpdateGame={handleUpdateGame}
-                  onDeleteGame={handleDeleteGame}
-                />
-              }
-            />
-            <Route path="/add" element={<AddGame onAddGame={handleAddGame} />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+        <div className="app-main">
+          <div className="layout">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Collection
+                    games={games}
+                    onUpdateGame={handleUpdateGame}
+                    onDeleteGame={handleDeleteGame}
+                  />
+                }
+              />
+              <Route path="/add" element={<AddGame onAddGame={handleAddGame} />} />
+              <Route path="/about" element={<About />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+          <Footer />
         </div>
-        <Footer />
       </div>
     </BrowserRouter>
   );

@@ -43,7 +43,7 @@ function GameItem({ game, onUpdateGame, onDeleteGame }) {
 
   if (isEditing) {
     return (
-      <article className="game-item">
+      <article className="game-item is-editing">
         <GameForm
           initialValues={game}
           onSubmit={handleUpdate}
